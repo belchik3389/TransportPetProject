@@ -1,0 +1,26 @@
+# Build artifacts
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# IDE settings
+.idea/
+.vs/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+logs/
+Logs/
+
+# Local data
+TransportTestData.json
