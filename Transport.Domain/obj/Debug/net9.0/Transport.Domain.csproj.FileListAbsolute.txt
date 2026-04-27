@@ -1,0 +1,11 @@
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/bin/Debug/net9.0/Transport.Domain.deps.json
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/bin/Debug/net9.0/Transport.Domain.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/bin/Debug/net9.0/Transport.Domain.pdb
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.AssemblyInfoInputs.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.AssemblyInfo.cs
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.csproj.CoreCompileInputs.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/refint/Transport.Domain.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/Transport.Domain.pdb
+/Users/andrew/Data/Work/TransportPetProject/Transport.Domain/obj/Debug/net9.0/ref/Transport.Domain.dll

@@ -1,0 +1,17 @@
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.csproj.AssemblyReference.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.AssemblyInfoInputs.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.AssemblyInfo.cs
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Infrastructure.deps.json
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Infrastructure.runtimeconfig.json
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Infrastructure.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Infrastructure.pdb
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Domain.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/bin/Debug/net9.0/Transport.Domain.pdb
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transpor.47BEF674.Up2Date
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/refint/Transport.Infrastructure.dll
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.pdb
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/Transport.Infrastructure.genruntimeconfig.cache
+/Users/andrew/Data/Work/TransportPetProject/Transport.Infrastructure/obj/Debug/net9.0/ref/Transport.Infrastructure.dll
