@@ -14,7 +14,7 @@ public class Transport : IAuditableDateTime
         
     public byte MaxPassengersCount { get; set; }
         
-    public int TypeId { get; set; }
+    public required int TypeId { get; set; }
         
-    public required TransportType Type { get; set; }
+    public TransportType Type { get; set; }
 }

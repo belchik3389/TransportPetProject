@@ -1,4 +1,3 @@
-using Transport.Domain.Entities;
 using Transport.Domain.Models;
 using TransportEntity = Transport.Domain.Entities.Transport;
 
@@ -10,10 +9,10 @@ public interface ITransportRepository
         Guid id,
         CancellationToken cancellationToken);
 
-    Task<TransportType?> GetByTypeId(
-        int id,
-        CancellationToken cancellationToken, 
-        bool asNoTracking = true);
+    Task<bool> ExistsByNumberPlate(
+        string numberPlate,
+        CancellationToken cancellationToken);
+
     
     Task<IReadOnlyList<TransportEntity>> Search(
         SearchTransportCriteria searchCriteria,

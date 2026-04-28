@@ -36,20 +36,19 @@ public sealed class CreateTransportHandler : IRequestHandler<CreateTransportRequ
             request.NumberPlate,
             request.TypeId);
 
-        var transportType = await _transportRepository.GetByTypeId(request.TypeId, cancellationToken, false);
-        
-        if (transportType is null)
+        if (await _transportRepository.ExistsByNumberPlate(request.NumberPlate, cancellationToken))
         {
-            _logger.LogWarning("TransportType with id {TransportTypeId} was not found during transport creation", request.TypeId);
+            _logger.LogWarning(
+                "Transport with number plate {NumberPlate} already exists",
+                request.NumberPlate);
 
             throw new ValidationException([
-                new ValidationFailure(nameof(request.TypeId), $"Transport type with id '{request.TypeId}' was not found.")
+                new ValidationFailure(nameof(request.NumberPlate), $"Transport with number plate '{request.NumberPlate}' already exists.")
             ]);
         }
         
         var transport = new TransportEntity
         {
-            Type = transportType,
             TypeId = request.TypeId,
             NumberPlate = request.NumberPlate,
             MaxPassengersCount = request.MaxPassengersCount

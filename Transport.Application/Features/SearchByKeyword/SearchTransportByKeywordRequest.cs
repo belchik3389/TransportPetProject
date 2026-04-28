@@ -10,6 +10,9 @@ public sealed record SearchTransportByKeywordRequest(string Keyword) : IRequest<
 internal sealed class SearchTransportByKeywordHandler
     : IRequestHandler<SearchTransportByKeywordRequest, IReadOnlyList<SearchTransportByKeywordResponse>>
 {
+    private const int DefaultTake = 10;
+    private const int DefaultSkip = 0;
+
     private readonly ITransportRepository _transportRepository;
     private readonly ILogger<SearchTransportByKeywordHandler> _logger;
     
@@ -27,8 +30,8 @@ internal sealed class SearchTransportByKeywordHandler
 
         var criteria = new SearchTransportCriteria
         {
-            Take = 10,
-            Skip = 0,
+            Take = DefaultTake,
+            Skip = DefaultSkip,
             Keyword = request.Keyword,
         };
         
