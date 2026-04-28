@@ -8,6 +8,8 @@ public sealed record TransportByIdResponse
     public string NumberPlate { get; set; }
         
     public byte MaxPassengersCount { get; set; }
+    
+    public int TypeId { get; set; }
         
     public string TypeName { get; set; }
 }
