@@ -7,14 +7,6 @@ public class CreateTransportRequestValidation : AbstractValidator<CreateTranspor
 {
     public CreateTransportRequestValidation(ITransportRepository transportRepository)
     {
-        RuleFor(request => request.NumberPlate)
-            .NotEmpty()
-            .WithMessage("Number plate must not be empty.");
-
-        RuleFor(request => request.MaxPassengersCount)
-            .GreaterThan((byte)0)
-            .WithMessage("Max passengers count must be greater than zero.");
-
         RuleFor(request => request.TypeId)
             .NotEmpty()
             .WithMessage("Type id must not be empty.")

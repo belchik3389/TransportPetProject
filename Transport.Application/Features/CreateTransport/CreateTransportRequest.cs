@@ -36,7 +36,7 @@ public sealed class CreateTransportHandler : IRequestHandler<CreateTransportRequ
             request.NumberPlate,
             request.TypeId);
 
-        var transportType = await _transportRepository.GetByTypeId(request.TypeId, cancellationToken);
+        var transportType = await _transportRepository.GetByTypeId(request.TypeId, cancellationToken, false);
         
         if (transportType is null)
         {

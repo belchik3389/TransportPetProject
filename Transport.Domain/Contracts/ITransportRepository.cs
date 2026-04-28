@@ -12,7 +12,8 @@ public interface ITransportRepository
 
     Task<TransportType?> GetByTypeId(
         int id,
-        CancellationToken cancellationToken);
+        CancellationToken cancellationToken, 
+        bool asNoTracking = true);
     
     Task<List<TransportEntity>> Search(
         SearchTransportCriteria searchCriteria,

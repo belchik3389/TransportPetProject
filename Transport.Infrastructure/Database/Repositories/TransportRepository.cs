@@ -27,10 +27,16 @@ internal sealed class TransportRepository : ITransportRepository
             .SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
     }
     
-    public async Task<TransportType?> GetByTypeId(int id, CancellationToken cancellationToken)
+    public async Task<TransportType?> GetByTypeId(int id, CancellationToken cancellationToken, bool asNoTracking = true)
     {
-        return await _typeEntityDbSet
-            .SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
+        var query = _typeEntityDbSet.AsQueryable();
+
+        if (asNoTracking)
+        {
+            query = query.AsNoTracking();
+        }
+        
+        return await query.SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
     }
 
     public async Task<List<TransportEntity>> Search(SearchTransportCriteria searchCriteria, CancellationToken cancellationToken)
