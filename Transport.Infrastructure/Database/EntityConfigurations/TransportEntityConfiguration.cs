@@ -8,6 +8,7 @@ public class TransportEntityConfiguration : IEntityTypeConfiguration<TransportEn
 {
     public void Configure(EntityTypeBuilder<TransportEntity> builder)
     {
+        // TODO: не проверял но я бы добавил название таблицы руками. Хотя в нестле может так
         builder
             .HasKey(x => x.Id);
             

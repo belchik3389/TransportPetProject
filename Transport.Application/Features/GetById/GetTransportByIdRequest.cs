@@ -3,6 +3,7 @@ using Transport.Domain.Contracts;
 
 namespace Transport.Application.Features.GetById;
 
+// TODO: название класса реквест, путает. я бы файл обзовал как handler, но в нестле так и называют. Пусть будет
 public sealed record GetTransportByIdRequest(Guid Id) : IRequest<TransportByIdResponse?>;
 
 internal sealed class GetTransportByIdHandler : IRequestHandler<GetTransportByIdRequest, TransportByIdResponse?>

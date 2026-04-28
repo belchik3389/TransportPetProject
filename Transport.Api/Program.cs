@@ -38,6 +38,7 @@ public static class Program
             app.MapControllers();
             
             //миграции при старте
+            // TODO: нет лога, если упадем не найдем. Например миграции задублируются изза мержа.
             await app.MigrateDatabaseSchema();
 
             await app.RunAsync();

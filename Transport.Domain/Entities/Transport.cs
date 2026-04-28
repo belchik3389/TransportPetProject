@@ -2,6 +2,7 @@ using Transport.Domain.Interfaces;
 
 namespace Transport.Domain.Entities;
 
+// TODO: я бы добаил Entity но в нестле вроде так можно оставить
 public class Transport : IAuditableDateTime
 {
     public Guid Id { get; set; }

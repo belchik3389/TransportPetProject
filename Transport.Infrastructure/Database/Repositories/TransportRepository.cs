@@ -22,10 +22,13 @@ internal sealed class TransportRepository : ITransportRepository
             .SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
     }
 
+    // TODO: IReadOnlyList
     public async Task<List<TransportEntity>> Search(SearchTransportCriteria searchCriteria, CancellationToken cancellationToken)
     {
         var query = _entitiesDbSet.AsNoTracking();
 
+        // TODO: я бы стырил вот это var keyword = LikeExpressionHelper.ToSubstringPattern(searchCriteria.Keyword);			query = query.Where(x =>
+        // 	EF.Functions.ILike(x.Title, keyword, LikeExpressionHelper.EscapeCharacter)
         if (!string.IsNullOrEmpty(searchCriteria.Keyword))
         {
             var keyword = $"%{ searchCriteria.Keyword }%"; //поиск по частичному совпадению
@@ -34,6 +37,7 @@ internal sealed class TransportRepository : ITransportRepository
                 || EF.Functions.ILike(x.NumberPlate, keyword));
         }
 
+        // TODO: сделал бы базовый репозиторий и Skip, Take вынес туда т.к. это везде будет практически
         if (searchCriteria.Take > 0)
         {
             query = query

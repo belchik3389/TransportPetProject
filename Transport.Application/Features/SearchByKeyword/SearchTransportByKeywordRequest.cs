@@ -7,7 +7,7 @@ namespace Transport.Application.Features.SearchByKeyword;
 public sealed record SearchTransportByKeywordRequest(string Keyword) : IRequest<List<SearchTransportByKeywordResponse>>;
 
 internal sealed class SearchTransportByKeywordHandler
-    : IRequestHandler<SearchTransportByKeywordRequest, List<SearchTransportByKeywordResponse>>
+    : IRequestHandler<SearchTransportByKeywordRequest, List<SearchTransportByKeywordResponse>> // TODO: List -> IReadOnlyList в контроллере тоже
 {
     private readonly ITransportRepository _transportRepository;
     
@@ -15,9 +15,11 @@ internal sealed class SearchTransportByKeywordHandler
     {
         _transportRepository = transportRepository;
     }
-    
+
+    // TODO: List -> IReadOnlyList
     public async Task<List<SearchTransportByKeywordResponse>> Handle(SearchTransportByKeywordRequest request, CancellationToken cancellationToken)
     {
+        // TODO: нет проверки на пустую и мин. количество. Репозиторий выдаст всю базу
         var criteria = new SearchTransportCriteria
         {
             Keyword = request.Keyword,

@@ -2,7 +2,7 @@ namespace Transport.Application.Features.SearchByKeyword;
 
 public sealed record SearchTransportByKeywordResponse
 {
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } // TODO: set -> init
         
     public DateTime CreatedDate { get; set; }
 

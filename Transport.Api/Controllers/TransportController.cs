@@ -9,6 +9,9 @@ namespace Transport.Api.Controllers;
 [Route("transport")]
 public class TransportController(IMediator mediator) : ControllerBase
 {
+    // TODO: ActionResult убрал бы и проверку тогда.
+    // сразу await mediator.Send(new GetTransportByIdRequest(id));
+    // Task<TransportByIdResponse>
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<TransportByIdResponse>> GetById(Guid id)
     {
