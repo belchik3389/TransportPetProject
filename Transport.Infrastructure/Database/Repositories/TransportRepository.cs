@@ -39,7 +39,7 @@ internal sealed class TransportRepository : ITransportRepository
         return await query.SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
     }
 
-    public async Task<List<TransportEntity>> Search(SearchTransportCriteria searchCriteria, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<TransportEntity>> Search(SearchTransportCriteria searchCriteria, CancellationToken cancellationToken)
     {
         var query = _transportEntityDbSet.AsNoTracking();
 

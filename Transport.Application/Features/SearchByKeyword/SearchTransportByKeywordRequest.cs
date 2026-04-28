@@ -5,10 +5,10 @@ using Transport.Domain.Models;
 
 namespace Transport.Application.Features.SearchByKeyword;
 
-public sealed record SearchTransportByKeywordRequest(string Keyword) : IRequest<List<SearchTransportByKeywordResponse>>;
+public sealed record SearchTransportByKeywordRequest(string Keyword) : IRequest<IReadOnlyList<SearchTransportByKeywordResponse>>;
 
 internal sealed class SearchTransportByKeywordHandler
-    : IRequestHandler<SearchTransportByKeywordRequest, List<SearchTransportByKeywordResponse>>
+    : IRequestHandler<SearchTransportByKeywordRequest, IReadOnlyList<SearchTransportByKeywordResponse>>
 {
     private readonly ITransportRepository _transportRepository;
     private readonly ILogger<SearchTransportByKeywordHandler> _logger;
@@ -21,12 +21,14 @@ internal sealed class SearchTransportByKeywordHandler
         _logger = logger;
     }
     
-    public async Task<List<SearchTransportByKeywordResponse>> Handle(SearchTransportByKeywordRequest request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyList<SearchTransportByKeywordResponse>> Handle(SearchTransportByKeywordRequest request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Searching transport by keyword {Keyword}", request.Keyword);
 
         var criteria = new SearchTransportCriteria
         {
+            Take = 10,
+            Skip = 0,
             Keyword = request.Keyword,
         };
         

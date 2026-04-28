@@ -15,7 +15,7 @@ public interface ITransportRepository
         CancellationToken cancellationToken, 
         bool asNoTracking = true);
     
-    Task<List<TransportEntity>> Search(
+    Task<IReadOnlyList<TransportEntity>> Search(
         SearchTransportCriteria searchCriteria,
         CancellationToken cancellationToken);
 
