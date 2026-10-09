@@ -1,6 +1,5 @@
+using Transport.Application.Exceptions;
 using MediatR;
-using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
 using Transport.Domain.Contracts;
 using TransportEntity = Transport.Domain.Entities.Transport;
@@ -9,7 +8,7 @@ namespace Transport.Application.Features.CreateTransport;
 
 public sealed record CreateTransportRequest : IRequest<Guid>
 {
-    public string NumberPlate { get; set; }
+    public required string NumberPlate { get; set; }
         
     public byte MaxPassengersCount { get; set; }
     
@@ -42,9 +41,7 @@ public sealed class CreateTransportHandler : IRequestHandler<CreateTransportRequ
                 "Transport with number plate {NumberPlate} already exists",
                 request.NumberPlate);
 
-            throw new ValidationException([
-                new ValidationFailure(nameof(request.NumberPlate), $"Transport with number plate '{request.NumberPlate}' already exists.")
-            ]);
+            throw new ConflictException( $"Transport with number plate '{request.NumberPlate}' already exists.");
         }
         
         var transport = new TransportEntity

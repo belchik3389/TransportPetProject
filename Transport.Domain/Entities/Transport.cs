@@ -16,5 +16,5 @@ public class Transport : IAuditableDateTime
         
     public required int TypeId { get; set; }
         
-    public TransportType Type { get; set; }
+    public TransportType Type { get; set; } = null!;
 }

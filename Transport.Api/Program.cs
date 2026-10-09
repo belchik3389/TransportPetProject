@@ -20,10 +20,11 @@ public static class Program
             builder.Services.AddControllers();
             builder.Services.AddProblemDetails();
             builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+            builder.Services.AddExceptionHandler<ConflictExceptionHandler>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddInfrastructureReferences(builder.Configuration);
-            builder.Services.AddApplicationReferences(builder.Configuration);
+            builder.Services.AddApplicationReferences();
 
             builder.Host.UseSerilog((context, services, loggerConfiguration) =>
             {

@@ -2,22 +2,22 @@ namespace Transport.Application.Features.SearchByKeyword;
 
 public sealed record SearchTransportByKeywordResponse
 {
-    public Guid Id { get; init; }
-        
-    public DateTime CreatedDate { get; init; }
+    public required Guid Id { get; init; }
+
+    public required DateTime CreatedDate { get; init; }
 
     public DateTime? UpdatedDate { get; init; }
-        
-    public string NumberPlate { get; init; }
-        
-    public byte MaxPassengersCount { get; init; }
-        
-    public TransportTypeResponse Type { get; init; }
+
+    public required string NumberPlate { get; init; }
+
+    public required byte MaxPassengersCount { get; init; }
+
+    public required TransportTypeResponse Type { get; init; }
 }
 
 public sealed record TransportTypeResponse
 {
-    public int Id { get; init; }
-    
-    public string Name { get; init; }
+    public required int Id { get; init; }
+
+    public required string Name { get; init; }
 }

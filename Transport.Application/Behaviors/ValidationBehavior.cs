@@ -1,4 +1,5 @@
 using FluentValidation;
+using FluentValidation.Results;
 using MediatR;
 
 namespace Transport.Application.Behaviors;
@@ -19,26 +20,20 @@ internal sealed class ValidationBehavior<TRequest, TResponse>
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        if (!_validators.Any())
-        {
-            return await next();
-        }
-
         var context = new ValidationContext<TRequest>(request);
-
-        var validationResults = await Task.WhenAll(
-            _validators.Select(validator => validator.ValidateAsync(context, cancellationToken)));
-
-        var failures = validationResults
-            .SelectMany(result => result.Errors)
-            .Where(error => error is not null)
-            .ToList();
+        var failures = new List<ValidationFailure>();
+        
+        foreach (var validator in _validators)
+        {
+            var result = await validator.ValidateAsync(context, cancellationToken);
+            failures.AddRange(result.Errors);
+        }
 
         if (failures.Count != 0)
         {
             throw new ValidationException(failures);
         }
 
-        return await next();
+        return await next(cancellationToken);
     }
 }

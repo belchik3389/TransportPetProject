@@ -7,5 +7,5 @@ public sealed record SearchTransportCriteria
     
     public int Take { get; init; }
     
-    public string Keyword { get; init; }
+    public string? Keyword { get; init; }
 }

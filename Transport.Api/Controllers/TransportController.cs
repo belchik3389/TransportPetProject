@@ -11,9 +11,11 @@ namespace Transport.Api.Controllers;
 public class TransportController(IMediator mediator) : ControllerBase
 {
     [HttpGet("{id:guid}")]
-    public async Task<TransportByIdResponse?> GetById(Guid id)
+    public async Task<ActionResult<TransportByIdResponse>> GetById(Guid id)
     {
-        return await mediator.Send(new GetTransportByIdRequest(id));
+        var response = await mediator.Send(new GetTransportByIdRequest(id));
+
+        return response is null ? NotFound() : Ok(response);
     }
     
     [HttpGet("searchByKeyword")]
