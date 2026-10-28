@@ -22,7 +22,7 @@ public class TransportEntityConfiguration : IEntityTypeConfiguration<TransportEn
             
         builder
             .HasOne(x => x.Type)
-            .WithMany()
+            .WithMany(x => x.Transports)
             .HasForeignKey(x => x.TypeId);
             
         builder

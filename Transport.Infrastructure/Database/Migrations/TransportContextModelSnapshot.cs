@@ -140,13 +140,18 @@ namespace Transport.Infrastructure.Database.Migrations
             modelBuilder.Entity("Transport.Domain.Entities.Transport", b =>
                 {
                     b.HasOne("Transport.Domain.Entities.TransportType", "Type")
-                        .WithMany()
+                        .WithMany("Transports")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_transport_transport_type_type_id");
 
                     b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("Transport.Domain.Entities.TransportType", b =>
+                {
+                    b.Navigation("Transports");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,10 +21,22 @@ internal sealed class TransportRepository : ITransportRepository
     
     public async Task<TransportEntity?> GetById(Guid id, CancellationToken cancellationToken)
     {
+        
         return await _transportEntityDbSet
-            .AsNoTracking() //Только чтение
+            .AsNoTracking() //Только чтение - не отслеживать изменение загруженных сущностей
             .Include(x => x.Type)
             .SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
+    }
+    
+    public async Task<TransportEntity[]> GetByTypeId(int id, CancellationToken cancellationToken)
+    {
+        var transportArray = await _typeEntityDbSet
+            .AsNoTracking()
+            .Include(x => x.Transports)
+            .SingleOrDefaultAsync(x => x.Id.Equals(id), cancellationToken: cancellationToken);
+            //?.Transports;
+
+       return transportArray?.Transports.ToArray() ?? [];
     }
 
     public async Task<bool> ExistsByNumberPlate(string numberPlate, CancellationToken cancellationToken)
@@ -42,8 +54,8 @@ internal sealed class TransportRepository : ITransportRepository
         {
             var keyword = $"%{ searchCriteria.Keyword }%"; //поиск по частичному совпадению
             query = query.Where(x =>
-                EF.Functions.ILike(x.Type.Name, keyword)
-                || EF.Functions.ILike(x.NumberPlate, keyword));
+                EF.Functions.ILike(x.Type!.Name, keyword)
+                || EF.Functions.ILike(x.NumberPlate, keyword)); //Like vs ILike
         }
 
         if (searchCriteria.Take > 0)

@@ -12,8 +12,11 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddInfrastructureReferences(this IServiceCollection services,
         IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString(nameof(TransportContext))
+                               ?? throw new InvalidOperationException($"Строка подключения '{nameof(TransportContext)}' не найдена в настройках.");
+        
         services.AddDbContext<TransportContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString(nameof(TransportContext))));
+            options.UseNpgsql(connectionString));
         
         services.AddScoped<ITransportRepository, TransportRepository>();
         

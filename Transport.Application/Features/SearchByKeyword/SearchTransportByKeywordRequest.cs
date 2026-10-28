@@ -7,6 +7,7 @@ namespace Transport.Application.Features.SearchByKeyword;
 
 public sealed record SearchTransportByKeywordRequest(string Keyword) : IRequest<IReadOnlyList<SearchTransportByKeywordResponse>>;
 
+//Граница процессов, CQRS, обработчики для команд и запросов
 internal sealed class SearchTransportByKeywordHandler
     : IRequestHandler<SearchTransportByKeywordRequest, IReadOnlyList<SearchTransportByKeywordResponse>>
 {
@@ -42,18 +43,26 @@ internal sealed class SearchTransportByKeywordHandler
             request.Keyword,
             transports.Count);
 
-        return transports.Select(x => new SearchTransportByKeywordResponse
+        return transports.Select(x =>
         {
-            Id = x.Id,
-            CreatedDate = x.CreatedDate,
-            UpdatedDate = x.UpdatedDate,
-            NumberPlate = x.NumberPlate,
-            MaxPassengersCount =  x.MaxPassengersCount,
-            Type = new TransportTypeResponse
+            if (x.Type is null)
             {
-                Id = x.Type.Id,
-                Name = x.Type.Name,
+                throw new InvalidOperationException($"Transport {x.Id} loaded without Type. Missing Include?");
             }
+
+            return new SearchTransportByKeywordResponse
+            {
+                Id = x.Id,
+                CreatedDate = x.CreatedDate,
+                UpdatedDate = x.UpdatedDate,
+                NumberPlate = x.NumberPlate,
+                MaxPassengersCount = x.MaxPassengersCount,
+                Type = new TransportTypeResponse
+                {
+                    Id = x.Type.Id,
+                    Name = x.Type.Name,
+                }
+            };
         }).ToList();
     }
 }

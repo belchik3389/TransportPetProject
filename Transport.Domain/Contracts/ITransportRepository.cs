@@ -8,6 +8,10 @@ public interface ITransportRepository
     Task<TransportEntity?> GetById(
         Guid id,
         CancellationToken cancellationToken);
+    
+    Task<TransportEntity[]> GetByTypeId(
+        int id,
+        CancellationToken cancellationToken);
 
     Task<bool> ExistsByNumberPlate(
         string numberPlate,

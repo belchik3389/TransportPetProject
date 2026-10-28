@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Transport.Application.Features.CreateTransport;
 using Transport.Application.Features.GetById;
+using Transport.Application.Features.GetByTypeId;
 using Transport.Application.Features.SearchByKeyword;
 
 namespace Transport.Api.Controllers;
@@ -16,6 +17,12 @@ public class TransportController(IMediator mediator) : ControllerBase
         var response = await mediator.Send(new GetTransportByIdRequest(id));
 
         return response is null ? NotFound() : Ok(response);
+    }
+    
+    [HttpGet("by-type/{typeId:int}")]
+    public async Task<TransportByTypeIdResponse[]> GetByTypeId(int typeId)
+    {
+        return await mediator.Send(new GetTransportByTypeIdRequest(typeId));
     }
     
     [HttpGet("searchByKeyword")]

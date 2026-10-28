@@ -14,7 +14,8 @@ public sealed record CreateTransportRequest : IRequest<Guid>
     
     public int TypeId { get; set; }
 }
-
+//шина команд
+//в одном процессе набор команд
 public sealed class CreateTransportHandler : IRequestHandler<CreateTransportRequest, Guid>
 {
     private readonly ILogger<CreateTransportHandler> _logger;

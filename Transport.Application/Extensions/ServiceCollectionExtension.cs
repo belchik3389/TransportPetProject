@@ -13,6 +13,7 @@ public static class ServiceCollectionExtension
 
         services.AddMediatR(options =>
         {
+            //Регистрируем хэндлеры
             options.RegisterServicesFromAssembly(typeof(ServiceCollectionExtension).Assembly);
             options.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });

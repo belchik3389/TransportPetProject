@@ -33,12 +33,17 @@ internal sealed class GetTransportByIdHandler : IRequestHandler<GetTransportById
 
         _logger.LogInformation("Transport with id {TransportId} was found", request.Id);
         
+        // if (transport.Type is null)
+        // {
+        //     throw new InvalidOperationException($"Transport {transport.Id} loaded without Type. Missing Include?");
+        // }
+        
         return new()
         {
             Id = transport.Id,
             NumberPlate = transport.NumberPlate,
             MaxPassengersCount = transport.MaxPassengersCount,
-            TypeName = transport.Type.Name,
+            TypeName = transport.Type.Name, //NavigationProperty
             TypeId = transport.Type.Id,
         };
     }
